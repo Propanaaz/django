@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+
+    <title>User login</title>
+</head>
+
+<style>
+
+    body{
+        background-color: ghostwhite;
+        margin-bottom: 50px;
+    }
+
+  
+     
+         @media only screen and (max-width:768px) {
+        .panel{
+            display: none;
+        }
+        }  
+/* 
+        fieldset{
+            border: 2px solid rgb(34,34,34);
+            padding: 10px;
+            height: 400px;
+        } */
+
+</style>
+
+
+
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-inverse " style="position: sticky; top: 0; z-index: 1;">
+            <div class="navbar-header">
+                <span class="navbar-brand">Welcome to the Sign Up Page</span>
+                <button type="button"  
+                class="navbar-toggle collapsed"
+                data-toggle="collapse"
+                data-target="#data"
+                aria-expanded="false"
+                > 
+                
+            </button>
+            </div>
+            <span class="navbar-text">
+                Dont Have an Account?
+              </span>
+            <a href="{% url 'user_registration' %}" class="navbar-btn btn btn-success">SignUp Here</a>
+            
+        </nav>
+
+
+
+        <div class="row" style="margin-top: 30px; " >
+            <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-lg-10 col-md-10 col-sm-10" > 
+
+    {% for message in messages%}
+    <h2>{{message}}</h2>
+    {% endfor%}
+    <fieldset>
+        <form action="" method="POST" >
+
+            {% csrf_token%}
+            <legend>Enter your login details</legend>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" type="text" name="username" class="form-control"> <br>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" class="form-control"> <br>
+            </div>
+
+
+           
+            <input type="submit" name="submit" class="btn btn-success">
+        </form>
+        <a  href="{% url 'forgotten_password' %}">Forgotten Password</a>
+    </fieldset>
+</div>
+</body>
+<script src="{% static 'jquery-3.6.1.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'html2canvas.js' %}"></script>
+</html>

@@ -1,0 +1,270 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta  http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	
+	 
+	<title>Query Receipt</title>
+	<style>
+		@font-face {
+    font-family: 'Monoty Corsiva';
+    src: url('{% static "monotype.ttf" %}') format('ttf'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}  
+
+		.parent{
+			background-color: ghostwhite;
+			padding: 10px;
+			padding-right: 30px;
+			padding-bottom: 0;
+		
+		}
+
+		  /* form{
+            width: 600px;
+           
+            margin: auto;
+            max-width: 600px;
+            
+        } */
+      
+        body{
+            background-color: ghostwhite;
+        }
+		h4{
+			font-family: 'Courier New', Courier, monospace
+		}	
+
+        /* h1{
+            position:relative;
+            left: -50px;
+        } */
+
+        /* @media only screen and (max-width: 1200px) {
+            .panel{
+                display: none;
+            }
+            }   */
+         
+             @media only screen and (max-width:768px) {
+            .panel{
+                display: none;
+            }
+            }  
+
+	</style>
+</head>
+<body>
+
+<div class="container-fluid" >
+
+	<nav class="navbar navbar-inverse " style="position: sticky; top: 0; z-index: 1;">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="{% url 'admin_dashboard' %}">Home</a>
+			<button type="button"  
+			class="navbar-toggle collapsed"
+			data-toggle="collapse"
+			data-target="#data"
+			aria-expanded="false"
+			> 
+			<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		</button>
+		</div>
+		<div class="collapse navbar-collapse" id="data">
+		
+			
+	
+	
+		</div>
+	  
+	</nav>
+
+		<div class="row">
+			<div class="col-lg-offset-10 col-lg-1">
+				<a href="" class="download btn btn-primary" id="download`" >Download</a><br>
+
+			</div>
+		</div>
+
+	
+
+
+
+<div class="row" >
+
+
+	<div class="panel col-lg-2 col-md-2 col-sm-2" style="background-color: rgb(34, 34, 34); margin-left: 15px; padding: 0; ">
+        <div class="panel-heading" style="color: white;"><strong>DASHBOARD</strong></div>
+        <div class="panel-body" style="background-color: rgb(34, 34, 34); padding: 0; height: 500px;">
+            <ul class="list-group">
+        <li class="list-group-item" style="background-color: rgb(34, 34, 34);"><a style="color: white;" href="{% url 'key' %}" >Change Key</a></li>
+        
+        <li class="list-group-item" style=" border: none; background-color: rgb(34, 34, 34);"><a style="color: white;" href="{% url 'all_user' %}">All Users</a></li>
+
+        <li class="list-group-item" style=" border: none; background-color: rgb(34, 34, 34);"><a style="color: white;" href="{% url 'all_transactions' %}">All Transaction</a></li>
+                       
+
+
+                        <li class="list-group-item" style="border: none; background-color: rgb(34, 34, 34);"><a style="color: white;" href="{% url 'admin_logout' %}">Logout</a></li>
+    </ul>
+        </div>
+    </div>
+
+
+	
+	<div class="col-lg-9 col-md-9 col-sm-9" style=" border: 2px solid rgb(51,122,183);">
+		<div   class="parent">
+		<div class="row" >
+			<div class="col-lg-3" >
+				<img src="{{company_logo}}" alt="" width="100" height="100">
+			</div>
+	
+			<div class="col-lg-6">
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 style="margin-bottom: 0;">{{company_name}}</h1>
+					</div>
+					<div class="col-lg-12">
+						<h5 style="margin: 0;">{{company_address}}</h5>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-4">
+				<h4 class="btn-primary text-center">Receipts</h4>
+			</div>
+	
+			<div class="col-lg-4">
+				<h4 class="btn-default text-center"><strong>Transaction id:</strong> {{id}}</h4>			</div>
+	
+			<div class="col-lg-4">
+				<h4 class="btn-default text-center">{{date}}:</h4>
+			</div>
+		</div>
+		
+			<div class="row">
+				<div class="col-lg-2 col-xs-12 col-sm-12 col-md-12" >
+					<h4 class="text-primary" >Received from: </h4>
+				</div>
+
+				<div class="col-lg-10 col-lg-pull-1 " style="position: relative;  right: 10px; border-bottom: 2px solid rgb(51,122,183);">
+					<h4 class=" text-primary text-center" style="font-size: 22px; position: relative; top: 10px; ">{{receiver}}</h4>
+				</div>
+
+
+				<!-- <div class="row">
+					<div class="bg-primary col-lg-offset-2 col-lg-10" style="position:relative; top:-10px;  left: -20px; "></div>
+				</div> -->
+			</div>
+
+			<div class="row">
+
+
+					<div class="col-lg-2" >
+						<h4 class="text-primary" >The Sum Of: </h4>
+					</div>
+					
+					<div class=" col-lg-10" style="position: relative; bottom: 10px; right: 10px; border-bottom: 2px solid rgb(51,122,183);">
+						<h4 class=" text-primary text-center" style="font-size: 22px; position: relative; top: 10px;">{{amount_naira}}</h4>
+					</div>
+
+				<!-- <div class="col-lg-3" >
+					<h4 class=" text-primary text-right" >Naira</h4>
+				</div> -->
+
+				<!-- <div class="row">
+					<div class="bg-primary col-lg-offset-2 col-lg-9" style="position:relative; top:-10px; left: -20px;"></div>
+				</div> -->
+
+				
+			</div>
+
+			<div class="row">
+
+				<div class="col-lg-2">
+					<h4 class="text-primary" >Being Payment for:</h4>
+				</div>
+		
+				<div class="col-lg-10 " style="position: relative; right: 10px; bottom: 10px; border-bottom: 2px solid rgb(51,122,183);">
+					<h4 class="text-primary text-center" style="font-size: 22px; position: relative; top: 10px;">{{description}}</h4>
+				</div>
+				
+				<!-- <div class="row">
+					<div class="bg-primary col-lg-offset-2 col-lg-9" style="position:relative; top:-10px; left: 20px;"></div>
+				</div> -->
+			</div>
+
+			<br>
+			<div class="row">
+				<div class="col-lg-3">
+					<span style=" font-weight: bold; border: 2px solid rgb(51,122,183); border-bottom: none;" class="text-center text-primary col-lg-12">Amount</span>
+					<span style=" font-weight: bold; border: 2px solid rgb(51,122,183);  " class="text-center text-primary col-lg-12"> #{{digit_naira}}</span>
+				</div>
+
+			
+			</div>
+			
+
+			<div class="row">
+				<div class="col-lg-offset-4 col-lg-4" >
+					<img src="{{signature}}" alt=""  style=" width: 200px; height: auto; ">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-lg-offset-4">
+					<span class="text-primary" style="position: relative; bottom: 30px;  font-size: larger; font-weight: bolder;  border-bottom: none; ">For: {{company_name}}</span>
+				</div>
+
+
+				
+			</div>
+			
+	</div>
+
+	</div>
+</div>
+
+
+
+	</div>
+</div>
+
+</div>
+</body>
+<script src="{% static 'jquery-3.6.1.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'html2canvas.js' %}"></script>
+
+</html>
+<script>
+	(function(){
+		// $("#download").click(function(){
+
+		// 	$(".parent").css({"backgroundColor":"white"});
+
+	
+		// });
+	
+
+	html2canvas($(".parent"),{
+	onrendered:function(canvas){
+	var imgsrc=canvas.toDataURL("image/png");
+	var newdata=imgsrc.replace(/^data:image\/png/,'data:application/octet-stream');
+	$(".download").attr("download","naz.jpg").attr("href",newdata);
+	
+	}
+	});
+	})();
+	
+									
+</script>

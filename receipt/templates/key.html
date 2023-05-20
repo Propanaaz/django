@@ -1,0 +1,129 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+
+    <title>KEY</title>
+</head>
+
+<style>
+
+    body{
+        background-color: ghostwhite;
+        margin-bottom: 50px;
+    }
+
+  
+     
+         @media only screen and (max-width:768px) {
+        .panel{
+            display: none;
+        }
+        }  
+/* 
+        fieldset{
+            border: 2px solid rgb(34,34,34);
+            padding: 10px;
+            height: 400px;
+        } */
+
+</style>
+
+
+
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-inverse " style="position: sticky; top: 0; z-index: 1;">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'admin_dashboard' %}">Home</a>
+                <button type="button"  
+                class="navbar-toggle collapsed"
+                data-toggle="collapse"
+                data-target="#data"
+                aria-expanded="false"
+                > 
+                <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            </div>
+            <div class="collapse navbar-collapse" id="data">
+            
+                
+        
+        
+            </div>
+          
+        </nav>
+
+
+
+        <div class="row" style="margin-top: 30px; ">
+    
+            <div class="panel col-lg-2 col-md-2 col-sm-2" style="background-color: rgb(34, 34, 34); margin-left: 15px; padding: 0; ">
+                <div class="panel-heading" style="color: white;"><strong>DASHBOARD</strong></div>
+                <div class="panel-body" style="background-color: rgb(34, 34, 34); padding: 0; height: 500px;">
+                    <ul class="list-group">
+                <li class="list-group-item" style="background-color: rgb(34, 34, 34);"><a style="color: white;" href="{% url 'key' %}" >Change Key</a></li>
+                
+                <li class="list-group-item" style=" border: none; background-color: rgb(34, 34, 34);"><a style="color: white;" href="{% url 'all_user' %}">All Users</a></li>
+        
+                <li class="list-group-item" style=" border: none; background-color: rgb(34, 34, 34);"><a style="color: white;" href="{% url 'all_transactions' %}">All Transaction</a></li>
+                               
+        
+        
+                                <li class="list-group-item" style="border: none; background-color: rgb(34, 34, 34);"><a style="color: white;" href="{% url 'admin_logout' %}">Logout</a></li>
+            </ul>
+                </div>
+            </div>
+    
+
+            <div class=" col-lg-9 col-md-9 col-sm-9" > 
+                <div class="row">
+                
+                    </div>
+                </div>
+
+
+
+
+
+
+
+        <div class="row" style="margin-top: 30px; " >
+            <!-- <div class="col-lg-offset-1 col-md-offset-10 col-sm-offset-10 col-lg-10 col-md-10 col-sm-9" >  -->
+                <div class="col-xs-offset-1 col-lg-8 col-md-8 col-sm-8 " > 
+
+    {% for message in messages%}
+    <h2>{{message}}</h2>
+    {% endfor%}
+    <fieldset>
+        <form action="" method="POST" >
+
+            {% csrf_token%}
+            <legend>ENTER YOUR NEW KEY</legend>
+            <div class="form-group">
+                <label for="key">KEY</label>
+                <input id="key" type="text" name="key" class="form-control"> <br>
+            </div>
+
+          
+
+
+           
+            <input type="submit" name="submit" class="btn btn-success">
+        </form>
+    </fieldset>
+</div>
+</div>
+</body>
+<script src="{% static 'jquery-3.6.1.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'html2canvas.js' %}"></script>
+</html>

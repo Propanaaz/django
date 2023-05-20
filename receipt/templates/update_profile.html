@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+
+    <title>UPDATE PROFILE</title>
+</head>
+<style>
+ 
+    body{
+        background-color: ghostwhite;
+        margin-bottom: 50px;
+    }
+
+  
+     
+         @media only screen and (max-width:768px) {
+        .panel{
+            display: none;
+        }
+        }  
+
+</style>
+
+
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-inverse nav1" style="position: sticky; top: 0; z-index: 1;">
+            <div class="navbar-header">
+                <span class="navbar-brand">{{company_name}}</span>
+                <button type="button"  
+                class="navbar-toggle collapsed"
+                data-toggle="collapse"
+                data-target="#data"
+                aria-expanded="false"
+                > 
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+        
+            </button>
+            </div>
+            <div class="collapse navbar-collapse" id="data">
+                
+                <ul class=" nav navbar-nav">
+                <li><a href="{% url 'user_dashboard' %}">Home</a></li>
+                <li>
+        
+                    <a href="#" 
+                    class="dropdown-toggle" 
+                    data-toggle="dropdown" 
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    id="dropdown" 
+                    >Transactions <span class="caret"></span> </a> 
+        
+                    <ul class="dropdown-menu" aria-labelledby="dropdown">
+                        <li><a href="{% url 'add_transaction' %}">Add Transaction</a></li>
+                        <li><a href="{% url 'all_transaction' %}">Query Transaction</a></li>                        
+                    </ul>
+                </li>
+                <li><a href="{% url 'plot' %}">Report</a></li>
+                <!-- <li><a href="{% url 'upload_signature' %}">Signature</a></li> -->
+                <li ><a href="{% url 'logout' %}">Log Out</a></li>
+            </ul>
+        
+        
+            </div>
+        
+            
+        </nav>
+
+
+
+
+
+
+
+        <div class="row" style="margin-top: 30px; ">
+           
+	<div class="panel col-lg-2 col-md-2 col-sm-2" style="background-color: rgb(34, 34, 34); margin-left: 15px; padding: 0; ">
+		<div class="panel-heading" style="color: white;"><strong>DASHBOARD</strong></div>
+		<div class="panel-body" style="background-color: rgb(34, 34, 34); padding: 0; height: 500px;">
+			<ul class="list-group">
+		<li class="list-group-item" style="background-color: rgb(34, 34, 34);"><a style="color: white;" href="{% url 'add_transaction' %}" >Add Transactions</a></li>
+		
+		<li class="list-group-item" style=" border: none; background-color: rgb(34, 34, 34);"><a style="color: white;" href="{% url 'all_transaction' %}">Query Transactions</a></li>
+
+		<li class="list-group-item" style=" border: none; background-color: rgb(34, 34, 34);"><a style="color: white;" href="{% url 'plot' %}">Generate Report</a></li>
+						
+		<li class="list-group-item" style="border: none; background-color: rgb(34, 34, 34);"><a style="color: white;" href="{% url 'upload_logo' %}">Business Logo</a></li>
+
+						<li class="list-group-item" style="border: none; background-color: rgb(34, 34, 34);"><a style="color: white;" href="{% url 'upload_signature' %}">Upload Signature</a></li>
+
+						<li class="list-group-item" style="border: none; background-color: rgb(34, 34, 34);">
+        
+							<a style="color: white;" href="#" 
+							class="dropdown-toggle" 
+							data-toggle="dropdown" 
+							aria-haspopup="true"
+							aria-expanded="false"
+							id="dropdown" 
+							>Account Settings <span class="caret"></span> </a> 
+				
+							<ul class="dropdown-menu" aria-labelledby="dropdown">
+								<li><a href="{% url 'change_password' %}">Change Password</a></li>                 
+								<li><a href="{% url 'change_receipt' %}">Change Receipt Type</a></li>     
+                                <li><a href="{% url 'update_profile' %}">Change Business Address</a></li>                        
+							</ul>
+						</li>
+
+						<li class="list-group-item" style="border: none; background-color: rgb(34, 34, 34);"><a style="color: white;" href="{% url 'logout' %}">Logout</a></li>
+	</ul>
+		</div>
+	</div>
+
+            <div class=" col-lg-9 col-md-9 col-sm-9" > 
+
+        {% for message in messages%}
+            <h2>{{message}}</h2>
+            {% endfor%}
+  
+    <fieldset>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <legend>Change Business Address</legend>
+            <!-- <div class="form-group" md-3>
+                <label for="business_name">Business Name</label>
+                <input type="text" name="business_name" class="form-control" id="business_name" value="{{company_name}}" required>
+            </div> -->
+            
+           
+           
+            <div class="form-group" md-3>
+                <label for="address">Business Address</label>
+                <input type="text" name="business_address" class="form-control" id="address" value="{{company_address}}" required>
+            </div>
+            
+           
+
+            
+
+         
+            
+            <input type="submit" name="submit" class="btn btn-primary">
+        </form>
+    </fieldset>
+    </div>
+</div>
+</div>
+</body>
+
+<script src="{% static 'jquery-3.6.1.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'html2canvas.js' %}"></script>
+</html>
